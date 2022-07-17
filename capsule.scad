@@ -1,21 +1,5 @@
 $fn = 100;
-capsule_length = 37.5;
-capsule_dia = 12.5; // 13 - 0.5
-
-capsule_flat_y=1.5;
-reed_length=14;
-// actually reed_dia = 2;
-reed_dia = 3.2;
-
-
-outer_stud_width = 2;
-middle_stud_width = 2;
-
-connector_x=6;
-connector_y=2;
-connector_gap_mill_z = 4;
-mating_tolerance = 0.1;
-
+include <dimensions.scad>;
 
 module capsule()
 {
