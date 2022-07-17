@@ -4,7 +4,8 @@ capsule_dia = 12.5; // 13 - 0.5
 
 capsule_flat_y=1.5;
 reed_length=14;
-reed_dia = 2;
+// actually reed_dia = 2;
+reed_dia = 3.2;
 
 
 outer_stud_width = 2;
@@ -13,8 +14,11 @@ middle_stud_width = 2;
 connector_x=6;
 connector_y=2;
 connector_gap_mill_z = 4;
+mating_tolerance = 0.1;
 
 
+module capsule()
+{
 difference()
 {
     // main body
@@ -48,16 +52,16 @@ difference()
            cylinder(capsule_length+2, d=1, center=true);
     }
    // opening for reed in the middle
-   translate([-3/2,-3/2,-reed_length/2])
-        cube([3,3,reed_length]);
+   translate([-reed_dia/2,-reed_dia/2,-reed_length/2])
+        cube([reed_dia,reed_dia,reed_length]);
 
    // female mating end
    translate([-connector_x/2 ,capsule_dia/2 -capsule_flat_y-connector_y, capsule_length/2-connector_gap_mill_z])
    {
 
        cube([connector_x, 10, connector_gap_mill_z]);
-       translate([0,-2,0])
-           cube([connector_x, 10, outer_stud_width]);
+       translate([0,-2,-mating_tolerance])
+           cube([connector_x, 10, outer_stud_width+mating_tolerance]);
    }
 
 }
@@ -67,8 +71,10 @@ translate([-connector_x/2 ,-capsule_dia/2 +capsule_flat_y, -capsule_length/2-con
 {
     cube([connector_x, connector_y, connector_gap_mill_z]);
        translate([0,2,0])
-           cube([connector_x, 2, outer_stud_width]);
+           cube([connector_x, 2, outer_stud_width-mating_tolerance]);
 
 }
 
+}
 
+capsule();
