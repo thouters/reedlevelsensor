@@ -16,6 +16,10 @@ connector_gap_mill_z = 4;
 mating_tolerance = 0.1;
 
 
-tube_inner_dia = 1.3;
-tube_outer_dia = 1.6;
+tube_inner_dia = 13;
+tube_outer_dia = 16;
+
+magnet2_innerdia = 20;
+magnet2_outerdia = 25;
+magnet2_length = 4;
 
