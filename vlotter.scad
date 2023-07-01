@@ -13,8 +13,8 @@ module floater()
         {
         handle_z=floater_dia/2;
         join_z=10;
-            translate([0,0,handle_z/2+floater_dia/2-join_z/2])
-                cylinder(handle_z+join_z, d=hole_dia+5, center=true);
+//            translate([0,0,handle_z/2+floater_dia/2-join_z/2])
+//                cylinder(handle_z+join_z, d=hole_dia+5, center=true);
             difference()
             {
                 sphere(d=floater_dia);
@@ -27,12 +27,13 @@ module floater()
             translate([0,0,120/2-2])
             cylinder(120, d=hole_dia, center=true);
 
-        for(mir=[0,1])
-        mirror([mir,0,0])
+
+        magnet_depth_extra = 1;
+        translate([0,0,(magnet2_length+magnet_depth_extra)/2-1])
+        difference()
         {
-        translate([hole_dia/2+2+6/2,0,22/2-1])
-            color("red")
-          cylinder(22, d=6.2, center=true);
+            cylinder((magnet2_length+magnet_depth_extra), d=magnet2_outerdia,center=true);
+            cylinder((magnet2_length+magnet_depth_extra), d=magnet2_innerdia,center=true);
         }
 
     }

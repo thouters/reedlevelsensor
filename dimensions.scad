@@ -21,5 +21,5 @@ tube_outer_dia = 16;
 
 magnet2_innerdia = 20;
 magnet2_outerdia = 25;
-magnet2_length = 4;
+magnet2_length = 10;
 

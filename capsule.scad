@@ -1,7 +1,7 @@
 $fn = 300;
 include <dimensions.scad>;
 
-module capsule(repeat=1)
+module capsule(repeat=1, odd=0)
 {
     difference()
     {
@@ -42,12 +42,8 @@ module capsule(repeat=1)
                         translate([3,0,0])
                            cylinder(capsule_length+2, d=1, center=true);
                     }
-                   // opening for reed in the middle
-                //%   translate([-reed_dia/2,-reed_dia/2,-reed_length/2])
-                //        cube([reed_dia,reed_dia,reed_length]);
-                //%   translate([0,0,-reed_length/2])
-                //        cube([reed_dia,reed_dia,reed_length]);
-                    rotate([0,20,0])
+
+                    rotate([0,(odd?-20:20),0])
                         cylinder(d=reed_dia, reed_length,center=true);
 
                 }
@@ -87,4 +83,10 @@ module capsule(repeat=1)
 }
 
 rotate([90,0,0])
-capsule(4);
+{
+    // type A
+    capsule(5, 0);
+    translate([20,0,0])
+    // type B
+        capsule(5, 1);
+}
